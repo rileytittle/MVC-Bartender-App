@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 const OrderCard = ({ id, timePurchased, customerName, drinkId }) => {
 	const [drink, setDrink] = useState(null);
+	const [refresh, setRefresh] = useState(false);
+	const completeOrder = () => {
+		axios
+			.patch(`http://localhost:3000/queue/${parseInt(id)}`)
+			.then((res) => {
+				setDrink(null);
+			});
+	};
 	useEffect(() => {
 		if (drinkId) {
 			axios
@@ -14,21 +22,25 @@ const OrderCard = ({ id, timePurchased, customerName, drinkId }) => {
 					console.error("Error fetching drinks:", error);
 				});
 		}
-	}, [drinkId]);
+	}, [drinkId, refresh]);
 	if (drink === null) {
-		return <div>Loading...</div>;
+		return <></>;
 	}
 	return (
 		<div className="card" style={{ width: 18 + "rem" }}>
 			<div className="card-body">
-				<h5 className="card-title">{customerName}</h5>
+				<h5 className="card-title">Customer: {customerName}</h5>
 				<h6 className="card-subtitle mb-2 text-body-secondary">
 					{timePurchased}
 				</h6>
-				<p className="card-text">{drink.name}</p>
-				<Link to={`/purchase/${id}`} className="card-link">
+				<p className="card-text">Drink: {drink.name}</p>
+				<button
+					type="button"
+					className="btn btn-success"
+					onClick={completeOrder}
+				>
 					Complete Order
-				</Link>
+				</button>
 			</div>
 		</div>
 	);

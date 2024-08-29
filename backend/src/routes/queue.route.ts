@@ -5,9 +5,15 @@ let app = Router();
 
 //gets all the orders currently in the database
 app.get("/", async (req, res) => {
-	await prisma.order.findMany().then((orders) => {
-		res.status(200).send(orders);
-	});
+	await prisma.order
+		.findMany({
+			where: {
+				fulfilled: false,
+			},
+		})
+		.then((orders) => {
+			res.status(200).send(orders);
+		});
 });
 
 //creates an order
@@ -45,8 +51,6 @@ app.patch("/:id", async (req, res) => {
 				id: Number(req.params.id),
 			},
 			data: {
-				customer_name: req.body.customerName,
-				drink_id: req.body.drinkId,
 				fulfilled: true,
 			},
 		})
