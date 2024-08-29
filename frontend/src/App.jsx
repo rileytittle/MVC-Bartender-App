@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import OrderDrink from "./pages/OrderDrink";
 import ViewQueue from "./pages/ViewQueue";
 import MainLayout from "./layouts/MainLayout";
+import Purchase from "./pages/Purchase";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
 			<Route index element={<Home />}></Route>
 			<Route path="/order" element={<OrderDrink />}></Route>
 			<Route path="/queue" element={<ViewQueue />}></Route>
+			<Route path="/purchase/:id" element={<Purchase />}></Route>
 		</Route>
 	)
 );

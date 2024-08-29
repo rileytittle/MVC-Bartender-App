@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Navbar = () => {
 	return (
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
-			<div class="container-fluid">
-				<Link to="/" class="navbar-brand">
+		<nav className="navbar navbar-expand-lg bg-body-tertiary">
+			<div className="container-fluid">
+				<Link to="/" className="navbar-brand">
 					Bartender App
 				</Link>
 				<button
-					class="navbar-toggler"
+					className="navbar-toggler"
 					type="button"
 					data-bs-toggle="collapse"
 					data-bs-target="#navbarNavAltMarkup"
@@ -16,14 +16,17 @@ const Navbar = () => {
 					aria-expanded="false"
 					aria-label="Toggle navigation"
 				>
-					<span class="navbar-toggler-icon"></span>
+					<span className="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div class="navbar-nav">
-						<Link to="/order" class="nav-link">
+				<div
+					className="collapse navbar-collapse"
+					id="navbarNavAltMarkup"
+				>
+					<div className="navbar-nav">
+						<Link to="/order" className="nav-link">
 							Order Drink
 						</Link>
-						<Link to="/queue" class="nav-link">
+						<Link to="/queue" className="nav-link">
 							View Drink Queue
 						</Link>
 					</div>

@@ -1,9 +1,17 @@
-import express from "express";
+const express = require("express");
 import { app as OrderRouter } from "./routes/order.route";
 import { app as QueueRouter } from "./routes/queue.route";
 
-let app = express();
+const cors = require("cors");
+const app = express();
+
 app.use(express.json());
+
+app.use(
+	cors({
+		origin: "http://localhost:5173", // Allow only this origin
+	})
+);
 
 app.use("/order", OrderRouter);
 app.use("/queue", QueueRouter);
